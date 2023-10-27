@@ -16,9 +16,9 @@ module.exports.verifyToken = verifyToken;
       const user = await User.findOne({email})
       if (!user) return res.status(401).send("Email no existe");
       if (password !== user.password) return res.status(401).send("Contraseña Incorrecta");
-      const tokenJWT = await jwt.sign({ _id: user._id, role: user.role},'secretKey');
-      res.status(200).json({ tokenJWT});
-      console.log(tokenJWT);
+      const pasetoToken = await paseto.sign({ _id: user._id, role: user.role},'secretKey');
+      res.status(200).json({ pasetoToken });
+      console.log(pasetoToken);
 
   });
 
